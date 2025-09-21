@@ -1,6 +1,8 @@
 # dotfiles
+<img width="1920" height="1080" alt="screenshot" src="https://github.com/user-attachments/assets/9c8095ba-bdad-4fad-86d8-306704b488fa" />
 
 Configuration files, scripts, and customizations from my Arch Linux + dwm 6.5 setup.
+
 
 ## Structure
 
