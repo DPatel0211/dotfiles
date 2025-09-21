@@ -5,7 +5,7 @@ Configuration files, scripts, and customizations from my Arch Linux + dwm 6.5 se
 ## Structure
 
 - **suckless/** - dwm, st, slock source trees with modifications
-- **config/** - application configurations (.Xresources, rofi, picom, etc.)
+- **config/** - application configurations (dunst, rofi, picom, etc.)
 - **scripts/** - custom shell scripts and utilities
 - **firefox-floorp/** - browser UI customizations
 - **fonts/** - font files and references
