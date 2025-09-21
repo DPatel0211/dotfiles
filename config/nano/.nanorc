@@ -1,0 +1,35 @@
+#include "~/.config/nano/*.nanorc"
+
+# Line numbers (you already have this - keeping it)
+set linenumbers
+set numbercolor white,black
+
+# Title bar (you already have this - keeping it)
+set titlecolor black,white
+
+# Function key bar (you already have this - keeping it)
+set functioncolor black,white
+
+# Status bar (you already have this - keeping it)  
+set statuscolor white,black
+
+# Key color (for shortcuts - currently normal, making it consistent)
+set keycolor black,white
+
+# Error messages - this is what you want to match the "read x lines" format
+set errorcolor white,black
+
+# Selected text color
+set selectedcolor black,white
+
+# Prompt bar (for search, replace, etc.)
+set promptcolor white,black
+
+# Include syntax highlighting files
+include "/usr/share/nano/*.nanorc"
+
+# Optional: if you want to remove bold formatting entirely
+# set nobold
+
+# Optional: show cursor position
+# set showcursor

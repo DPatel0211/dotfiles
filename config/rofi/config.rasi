@@ -1,0 +1,77 @@
+configuration {
+    modi: "drun,run";
+    font: "CozetteCrossedSeven 10";
+    location: 0;
+    fixed-num-lines: true;
+    show-icons: false;
+    terminal: "st";
+    run-shell-command: "{terminal} -e {cmd}";
+    disable-history: false;
+    matching: "fuzzy";
+    
+    // Remove shortcuts
+    kb-remove-to-eol: "";
+    kb-accept-entry: "Return,KP_Enter";
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+}
+
+* {
+    black: #000000;
+    white: #FFFFFF;
+    background-color: @black;
+    text-color: @white;
+}
+
+window {
+    transparency: "real";
+    width: 25%;
+    padding: 0;
+    border: 2px;
+    border-radius: 0px;
+    border-color: @white;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    padding: 0;
+    border: 0;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: @black;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @black;
+    text-color: @white;
+    padding: 2px;
+}
+
+entry {
+    background-color: @black;
+    text-color: @white;
+    padding: 2px;
+}
+
+listview {
+    lines: 10;
+    scrollbar: false;
+    padding: 2px;
+}
+
+element {
+    padding: 2px;
+}
+
+element selected {
+    background-color: @white;
+    text-color: @black;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}

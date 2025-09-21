@@ -1,0 +1,61 @@
+/* foobarski */
+#navigator-toolbox {
+  display: flex !important;
+  align-items: center !important;
+}
+
+#navigator-toolbox:not(:-moz-lwtheme) {
+  background: var(--toolbar-field-background-color) !important;
+}
+
+#nav-bar {
+  padding-block-start: 0px !important;
+
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+
+/* foobarski */
+  flex: 1 !important;
+  order: 2 !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+#urlbar,
+#urlbar * {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#urlbar-background {
+  border: transparent !important;
+}
+
+#urlbar[focused="true"] > #urlbar-background,
+#urlbar:not([open]) > #urlbar-background {
+  background: var(--toolbar-field-background-color) !important;
+}
+
+#urlbar[open] > #urlbar-background {
+  background: var(--toolbar-field-background-color) !important;
+}
+
+.urlbarView-row:hover > .urlbarView-row-inner,
+.urlbarView-row[selected] > .urlbarView-row-inner {
+  background: var(--toolbar-field-focus-background-color) !important;
+}
+
+.urlbar-icon,
+#urlbar-go-button {
+  margin: auto;
+}
+.urlbar-page-action {
+  padding: 0 inherit !important;
+}
+
+/* foobarski */
+#urlbar-container {
+  /* Set a max width so it doesn't stretch too wide */
+  max-width: 500px !important; /* Adjust this value as needed */
+}

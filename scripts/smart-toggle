@@ -1,0 +1,20 @@
+#!/bin/bash
+action="$1"
+
+# Check if MPD is playing
+if mpc status &>/dev/null; then
+    case "$action" in
+        toggle) mpc toggle ;;
+        next) mpc next ;;
+        prev) mpc prev ;;
+        stop) mpc stop ;;
+    esac
+else
+    # Use playerctl for other players
+    case "$action" in
+        toggle) playerctl play-pause ;;
+        next) playerctl next ;;
+        prev) playerctl previous ;;
+        stop) playerctl stop ;;
+    esac
+fi

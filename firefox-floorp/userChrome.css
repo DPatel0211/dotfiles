@@ -1,0 +1,212 @@
+/*==============================================================================================*
+
+  +-----+-----+-----+-----+-----+-----+-----+
+  | █▀▀ | ▄▀█ | █▀▀ | █▀▀ | ▄▀█ | █▀▄ | █▀▀ |
+  | █▄▄ | █▀█ | ▄▄█ | █▄▄ | █▀█ | █▄▀ | ██▄ |
+  +-----+-----+-----+-----+-----+-----+-----+
+
+  Description:    Cascade is a minimalstic and keyboard centered custom theme removing a lot of the
+                  subjective clutter default Firefox comes with. This theme is highly inspired by the
+                  stylistic choices of SimpleFox by Miguel Ávila. 🦊
+                  https://github.com/migueravila/SimpleFox
+
+  Author:         Andreas Grafen
+                  (https://andreas.grafen.info)
+
+  Repository:     https://github.com/andreasgrafen/cascade
+                  Thank you Nick, Abdallah, Benyamin and Wael for all the great suggestions for improvements! ♡
+
+                  Nick:     https://github.com/nicksundermeyer
+                  Abdallah: https://github.com/HeiWiper
+                  Benyamin: https://github.com/benyaminl
+                  Wael:     https://github.com/wael444
+
+                  If you're looking for a **mouse-friendly** clone please check out Waterfall.
+                  https://github.com/crambaud/waterfall
+
+*==============================================================================================*/
+
+@import "includes/cascade-config.css";
+@import "includes/cascade-colours.css";
+
+@import "includes/cascade-layout.css";
+@import "includes/cascade-responsive.css";
+@import "includes/cascade-floating-panel.css";
+
+@import "includes/cascade-nav-bar.css";
+@import "includes/cascade-tabs.css";
+
+#statuspanel { display: none !important; }
+
+/* Dim inactive tabs */
+.tabbrowser-tab:not([selected="true"]) .tab-content {
+    opacity: 0.6; /* Dimming level */
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Undim when hovered */
+.tabbrowser-tab:not([selected="true"]):hover .tab-content {
+    opacity: 1.0;
+}
+
+/* Active tab stays normal */
+.tabbrowser-tab[selected="true"] .tab-content {
+    opacity: 1.0;
+}
+
+/* foo */
+
+/*
+#sidebar-box[sidebarcommand="viewHistorySidebar"] {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+
+#sidebar-box[sidebarcommand="viewHistorySidebar"][hidden="true"] {
+  margin-left: -100% !important;
+  opacity: 0 !important;
+  transition: all 0.25s ease-in-out !important;
+}
+
+
+#sidebar-splitter[sidebarcommand="viewHistorySidebar"] {
+  transition: opacity 0.3s ease !important;
+}
+
+
+#sidebar-box[sidebarcommand="viewHistorySidebar"]:not([hidden]) {
+  animation: slideInFromLeft 0.3s ease-out !important;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+}
+*/
+
+/* bar */
+
+/* --- Overlay History Sidebar --- */
+#sidebar-box[sidebarcommand="viewHistorySidebar"] {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 300px !important; /* adjust */
+  z-index: 9999 !important;
+  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
+  box-shadow: none !important;
+  overflow: auto !important;
+}
+
+/* Hide splitter */
+#sidebar-splitter {
+  display: none !important;
+}
+
+/* When hidden, slide out */
+#sidebar-box[sidebarcommand="viewHistorySidebar"]:[hidden="true"] {
+    animation: slideOutToLeft 0.3s ease-in forwards !important;
+}
+
+/* When visible, slide in :not([hidden]) */
+#sidebar-box[sidebarcommand="viewHistorySidebar"]:not([hidden]) {
+  animation: slideInFromLeft 0.3s ease-out forwards !important;
+}
+
+/* Slide in */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide out */
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+findbar {
+  position: fixed !important;
+/*  bottom: 0 !important;   */
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 999 !important; 
+  order: -1 !important;   
+  padding: 0 4px !important;
+  margin: 0 !important;
+  border-top: 1px solid var(--chrome-content-separator-color) !important;
+  background: var(--toolbar-bgcolor) !important;
+}
+
+/* Slide in from top */
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(calc(-1 * var(--findbar-height))) !important;
+    /* transform: translateY(-50px); */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* Slide out to top */
+@keyframes slideOutToTop {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+   /* transform: translateY(-50px); */
+    transform: translateY(calc(-1 * var(--findbar-height))) !important;
+    opacity: 0;
+  }
+}
+
+/* Apply animations to findbar */
+findbar:[hidden="true"] {
+  animation: slideOutToTop 0.25s ease-in forwards !important;
+}
+
+findbar:not([hidden]) {
+  animation: slideInFromTop 0.25s ease-out forwards !important;
+}
+
+
+#star-button-box {
+    display: none !important;
+}
+
+#QRCodeGeneratePageAction {
+    display: none !important;
+}
+
+#tracking-protection-icon-container {
+  display: none;
+}
+
+#identity-box { display: none !important; }
+
+.urlbarView-button {
+    display: none !important;
+}

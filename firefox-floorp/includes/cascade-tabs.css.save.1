@@ -1,0 +1,283 @@
+/* remove gap after pinned tabs */
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+  margin-inline-start: 0 !important;
+}
+
+/* hides the list-all-tabs button*/
+#alltabs-button {
+  display: var(--uc-show-all-tabs-button) !important;
+}
+
+/* remove tab shadow */
+.tabbrowser-tab > .tab-stack > .tab-background {
+  box-shadow: none !important;
+}
+
+/* multi tab selection */
+#tabbrowser-tabs:not([noshadowfortests])
+  .tabbrowser-tab:is([multiselected])
+  > .tab-stack
+  > .tab-background:-moz-lwtheme {
+  outline-color: var(--toolbarseparator-color) !important;
+}
+
+/* tab close button options */
+.tabbrowser-tab:not([pinned]) .tab-close-button {
+  display: var(--show-tab-close-button) !important;
+}
+.tabbrowser-tab:not([pinned]):hover .tab-close-button {
+  display: var(--show-tab-close-button-hover) !important;
+}
+
+/* adaptive tab width */
+.tabbrowser-tab[selected][fadein]:not([pinned]):not(tab-group[collapsed] .tabbrowser-tab) {
+  max-width: var(--uc-active-tab-width) !important;
+}
+.tabbrowser-tab[fadein]:not([selected]):not([pinned]):not(tab-group[collapsed] .tabbrowser-tab) {
+  max-width: var(--uc-inactive-tab-width) !important;
+}
+
+/* container tabs indicator */
+.tabbrowser-tab[usercontextid]
+  > .tab-stack
+  > .tab-background
+  > .tab-context-line {
+  margin: 2px var(--container-tabs-indicator-margin) 0
+    var(--container-tabs-indicator-margin) !important;
+  height: 1px !important;
+
+  box-shadow: var(--uc-identity-glow) var(--identity-tab-color) !important;
+}
+
+/* show favicon when media is playing but tab is hovered */
+.tab-icon-image:not([pinned]) {
+  opacity: 1 !important;
+}
+
+/* makes the speaker icon to always appear if the tab is playing (not only on hover) */
+.tab-icon-overlay:not([crashed]),
+.tab-icon-overlay[pinned][crashed][selected] {
+  top: 5px !important;
+  z-index: 1 !important;
+
+  padding: 1.5px !important;
+  inset-inline-end: -8px !important;
+  width: 16px !important;
+  height: 16px !important;
+
+  border-radius: 10px !important;
+}
+
+/* style and position speaker icon */
+.tab-icon-overlay:not([sharing], [crashed]):is(
+    [soundplaying],
+    [muted],
+    [activemedia-blocked]
+  ) {
+  stroke: transparent !important;
+  background: transparent !important;
+  opacity: 1 !important;
+  fill-opacity: 0.8 !important;
+
+  color: currentColor !important;
+
+  stroke: var(--toolbar-bgcolor) !important;
+  background-color: var(--toolbar-bgcolor) !important;
+}
+
+/* change the colours of the speaker icon on active tab to match tab colours */
+.tabbrowser-tab[selected]
+  .tab-icon-overlay:not([sharing], [crashed]):is(
+    [soundplaying],
+    [muted],
+    [activemedia-blocked]
+  ) {
+  stroke: var(--toolbar-bgcolor) !important;
+  background-color: var(--toolbar-bgcolor) !important;
+}
+
+.tab-icon-overlay:not([pinned], [sharing], [crashed]):is(
+    [soundplaying],
+    [muted],
+    [activemedia-blocked]
+  ) {
+  margin-inline-end: 9.5px !important;
+}
+
+.tabbrowser-tab:not([image])
+  .tab-icon-overlay:not([pinned], [sharing], [crashed]) {
+  top: 0 !important;
+
+  padding: 0 !important;
+  margin-inline-end: 5.5px !important;
+  inset-inline-end: 0 !important;
+}
+
+.tab-icon-overlay:not([crashed])[soundplaying]:hover,
+.tab-icon-overlay:not([crashed])[muted]:hover,
+.tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
+  color: currentColor !important;
+  stroke: var(--toolbar-color) !important;
+  background-color: var(--toolbar-color) !important;
+  fill-opacity: 0.95 !important;
+}
+
+.tabbrowser-tab[selected] .tab-icon-overlay:not([crashed])[soundplaying]:hover,
+.tabbrowser-tab[selected] .tab-icon-overlay:not([crashed])[muted]:hover,
+.tabbrowser-tab[selected]
+  .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
+  color: currentColor !important;
+  stroke: var(--toolbar-color) !important;
+  background-color: var(--toolbar-color) !important;
+  fill-opacity: 0.95 !important;
+}
+
+/* speaker icon colour fix */
+#TabsToolbar .tab-icon-overlay:not([crashed])[soundplaying],
+#TabsToolbar .tab-icon-overlay:not([crashed])[muted],
+#TabsToolbar .tab-icon-overlay:not([crashed])[activemedia-blocked] {
+  color: var(--toolbar-color) !important;
+}
+
+/* speaker icon colour fix on hover */
+#TabsToolbar .tab-icon-overlay:not([crashed])[soundplaying]:hover,
+#TabsToolbar .tab-icon-overlay:not([crashed])[muted]:hover,
+#TabsToolbar .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
+  color: var(--toolbar-bgcolor) !important;
+}
+
+/* selected tab colour fix */
+.tabbrowser-tab[selected] .tab-background {
+  background-color: var(--uc-highlight-colour) !important;
+  outline: none !important;
+}
+.tab-background {
+  margin: 0px !important;
+  border-radius: 0px !important;
+}
+
+/* disable tab group label changing colour when collapsed */
+.tab-group-label-container > .tab-group-label {
+  outline: none !important;
+  color: light-dark(var(--tab-group-color-pale), var(--tab-group-label-text-dark)) !important;
+  background-color: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
+  border-radius: var(--uc-border-radius) !important;
+}
+
+/* foobarski */
+/* Hide tab text, show only favicons */
+/* Ensure tabs container reflows properly */
+#tabbrowser-tabs {
+  overflow: visible !important;
+}
+
+#tabbrowser-arrowscrollbox {
+  overflow: visible !important;
+}
+
+.tabbrowser-tab {
+  flex-shrink: 0 !important;
+}
+
+/* Hide tab text, show only favicons */
+.tab-label-container {
+  display: none !important;
+}
+
+/* Hide tab close buttons to save space */
+.tab-close-button {
+  display: none !important;
+}
+
+/* Minimize tab size to just fit the icon */
+.tabbrowser-tab:not([pinned]) {
+  min-width: 48px !important;
+  max-width: 48px !important;
+  width: 48px !important;
+}
+
+/* Make pinned tabs same minimal size */
+.tabbrowser-tab[pinned] {
+  min-width: 48px !important;
+  max-width: 48px !important;
+  width: 48px !important;
+}
+
+/* Remove any extra padding from tab content */
+.tab-content {
+  padding: 1px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Center and size the favicon */
+.tab-icon-image {
+  margin: 0 !important;
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
+}
+
+/* Override any adaptive tab width rules from Cascade */
+.tabbrowser-tab[selected][fadein]:not([pinned]):not(tab-group[collapsed] .tabbrowser-tab) {
+  max-width: 48px !important;
+  min-width: 48px !important;
+  width: 48px !important;
+}
+
+.tabbrowser-tab[fadein]:not([selected]):not([pinned]):not(tab-group[collapsed] .tabbrowser-tab) {
+  max-width: 48px !important;
+  min-width: 48px !important;
+  width: 48px !important;
+}
+
+/* Adjust speaker icon positioning for smaller tabs */
+.tab-icon-overlay:not([crashed]),
+.tab-icon-overlay[pinned][crashed][selected] {
+  top: 2px !important;
+  inset-inline-end: -6px !important;
+  width: 12px !important;
+  height: 12px !important;
+  padding: 1px !important;
+}
+
+.tab-icon-overlay:not([pinned], [sharing], [crashed]):is(
+    [soundplaying],
+    [muted],
+    [activemedia-blocked]
+  ) {
+  margin-inline-end: 6px !important;
+}
+
+/* Remove tab background margins for cleaner look */
+.tab-background {
+  margin: 0px !important;
+  border-radius: 0px !important;
+}
+
+/* Loading indicator (throbber) takes priority over favicon */
+.tab-throbber {
+  position: relative !important;
+  z-index: 10 !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+}
+
+/* Hide favicon when tab is loading */
+.tabbrowser-tab[busy] .tab-icon-image {
+  display: none !important;
+}
+
+/* Show throbber when tab is loading */
+.tabbrowser-tab[busy] .tab-throbber {
+  display: block !important;
+}
+
+/* Hide throbber when not loading */
+.tabbrowser-tab:not([busy]) .tab-throbber {
+  display: none !important;
+}

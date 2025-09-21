@@ -1,0 +1,7 @@
+#!/home/user/.local/share/pipx/venvs/terminal-rain-lightning/bin/python
+import sys
+from terminal_rain_lightning import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())

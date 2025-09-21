@@ -1,0 +1,147 @@
+/**
+*
+* Author : Aditya Shakya (adi1090x)
+* Github : @adi1090x
+* 
+* Rofi Theme File - Bluetooth Device Menu (5 lines)
+* Rofi Version: 1.7.3
+**/
+
+/*****----- Configuration -----*****/
+configuration {
+   modi:                       "dmenu";
+   show-icons:                 false;
+   display-dmenu:              "";
+   drun-display-format:        "{name}";
+   window-format:              "{w} · {c} · {t}";
+   disable-history:            true;
+   show-match:                 false;
+}
+
+/*****----- Global Properties -----*****/
+@import                          "shared/colors.rasi"
+@import                          "shared/font.rasi"
+
+/*****----- Main Window -----*****/
+window {
+   /* properties for window widget */
+   transparency:                "real";
+   location:                    north;
+   anchor:                      north;
+   fullscreen:                  false;
+   width:                       400px;
+   x-offset:                    0px;
+   y-offset:                    -15px;
+   border:                      2px;
+   border-color:                black;
+
+   /* properties for all widgets */
+   enabled:                     true;
+   border-radius:               0px;
+   cursor:                      "default";
+   background-color:            @background;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+   enabled:                     true;
+   spacing:                     0px;
+   background-color:            transparent;
+   orientation:                 vertical;
+   children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+   enabled:                     true;
+   spacing:                     10px;
+   padding:                     30px 100px 1px 66px;
+   background-color:            transparent;
+   text-color:                  @foreground;
+   orientation:                 horizontal;
+/*   horizontal-align:            0.5; */
+   children:                    [ "textbox-prompt-colon", "prompt" ];
+}
+
+textbox-prompt-colon {
+   enabled:                     true;
+   expand:                      false;
+   str:                         "󰂯";
+   padding:                     10px 16px;
+   border-radius:               100%;
+   background-color:            @background-alt;
+   text-color:                  inherit;
+   horizontal-align:            0.5;
+}
+
+prompt {
+   enabled:                     true;
+   expand:                      false;
+   padding:                     12px 16px;
+   border-radius:               100%;
+   background-color:            @background-alt;
+   text-color:                  inherit;
+   horizontal-align:            0.5;
+}
+
+/*****----- Listview -----*****/
+listview {
+   enabled:                     true;
+   columns:                     1;
+   cycle:                       true;
+   dynamic:                     true;
+   lines:                       3;
+   scrollbar:                   false;
+   layout:                      vertical;
+   reverse:                     false;
+   fixed-height:                true;
+   fixed-columns:               true;
+   
+   spacing:                     8px;
+   padding:                     20px;
+   background-color:            transparent;
+   text-color:                  @foreground;
+   cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+   enabled:                     true;
+   spacing:                     8px;
+   padding:                     12px;
+   border-radius:               8px;
+   background-color:            transparent;
+   text-color:                  @foreground;
+   cursor:                      pointer;
+}
+element normal.normal {
+   background-color:            @background-alt;
+   text-color:                  inherit;
+}
+element normal.urgent {
+   background-color:            @urgent;
+   text-color:                  @background;
+}
+element normal.active {
+   background-color:            @active;
+   text-color:                  @background;
+}
+element selected.normal {
+   background-color:            @selected;
+   text-color:                  @background;
+}
+element selected.urgent {
+   background-color:            @urgent;
+   text-color:                  @background;
+}
+element selected.active {
+   background-color:            @active;
+   text-color:                  @background;
+}
+element-text {
+   background-color:            transparent;
+   text-color:                  inherit;
+   cursor:                      inherit;
+   vertical-align:              0.5;
+   horizontal-align:            0.0;
+}
